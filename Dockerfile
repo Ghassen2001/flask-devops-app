@@ -1,14 +1,17 @@
-#Use an official python image
-FROM python:3.9-slim
+# Étape 1 : Utiliser une image Python légère
+FROM python:3.10-slim
 
-#Set work directory
+# Étape 2 : Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-#Copy app files
+# Étape 3 : Copier le fichier Python dans le conteneur
 COPY . .
 
-#Install Flask
-RUN pip install Flask
+# Étape 4 : Installer Flask
+RUN pip install --no-cache-dir flask
 
-#Run the app
+# Étape 5 : Exposer le port utilisé par Flask
+EXPOSE 5000
+
+# Étape 6 : Commande pour démarrer l'application
 CMD ["python", "app.py"]
